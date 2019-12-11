@@ -19,7 +19,7 @@ interface Canonicalizer
      * @param string $email
      * @return string|null
      */
-    public static function canonicalizeEmail(string $email): ?string;
+    public static function email(string $email): ?string;
 
     /**
      * Canonicalize slug.
@@ -29,7 +29,7 @@ interface Canonicalizer
      * @param string|null $language
      * @return string
      */
-    public static function canonicalizeSlug(string $title, string $separator = '-', ?string $language = 'en'): string;
+    public static function slug(string $title, string $separator = '-', ?string $language = 'en'): string;
 
     /**
      * Canonicalize url.
@@ -38,7 +38,7 @@ interface Canonicalizer
      * @param string $separator
      * @return string
      */
-    public static function canonicalizeUrl(string $url, string $separator = '-'): string;
+    public static function url(string $url, string $separator = '-'): string;
 
     /**
      * Canonicalize uri.
@@ -47,5 +47,5 @@ interface Canonicalizer
      * @param string $separator
      * @return string
      */
-    public static function canonicalizeUri(string $uri, string $separator = '-'): string;
+    public static function uri(string $uri, string $separator = '-'): string;
 }

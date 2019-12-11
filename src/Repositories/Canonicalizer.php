@@ -38,7 +38,7 @@ class Canonicalizer implements CanonicalizerContract
      * @param string $email
      * @return string|null
      */
-    public static function canonicalizeEmail(string $email): ?string
+    public static function email(string $email): ?string
     {
         if (false === strpos($email, '@')) {
             return null;
@@ -60,7 +60,7 @@ class Canonicalizer implements CanonicalizerContract
      * @param string|null $language
      * @return string
      */
-    public static function canonicalizeSlug(string $title, string $separator = '-', ?string $language = 'en'): string
+    public static function slug(string $title, string $separator = '-', ?string $language = 'en'): string
     {
         return Str::slug($title, $separator, $language);
     }
@@ -72,7 +72,7 @@ class Canonicalizer implements CanonicalizerContract
      * @param string $separator
      * @return string
      */
-    public static function canonicalizeUrl(string $url, string $separator = '-'): string
+    public static function url(string $url, string $separator = '-'): string
     {
         $url = trim($url, " \t\n\r\0\x0B/\\");
         $url = explode('/', $url);
@@ -90,8 +90,8 @@ class Canonicalizer implements CanonicalizerContract
      * @param string $separator
      * @return string
      */
-    public static function canonicalizeUri(string $uri, string $separator = '-'): string
+    public static function uri(string $uri, string $separator = '-'): string
     {
-        return self::canonicalizeUrl($uri, $separator);
+        return self::url($uri, $separator);
     }
 }
