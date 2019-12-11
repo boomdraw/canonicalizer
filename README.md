@@ -19,7 +19,25 @@ Via Composer
 $ composer require boomdraw/canonicalizer
 ```
 
+### Laravel
+
 The package will automatically register itself.
+
+### Lumen
+
+Uncomment the following line in the bootstrap file:
+
+```php
+// bootstrap/app.php:
+$app->withFacades();
+```
+
+Register `CanonicalizerServiceProvider`
+
+```php
+// bootstrap/app.php:
+$app->register(Boomdraw\Canonicalizer\CanonicalizerServiceProvider::class);
+```
 
 ## Usage examples
 
@@ -43,30 +61,30 @@ Args `string $string, bool $nullEmpty = true`
 
 Returns canonicalized string or `null` if `$nullEmpty = true` and the string is empty.
 
-#### Canonicalizer::canonicalizeEmail()
+#### Canonicalizer::email()
 
 Args: `string $email`
 
 Returns canonicalized email without dots before `@` or `null` if the string does not contain `@`
 
-#### Canonicalizer::canonicalizeSlug()
+#### Canonicalizer::slug()
 
 Args: `string $title, string $separator = '-', ?string $language = 'en'`
 
 `\Illuminate\Support\Str::slug()` alias
 
-#### Canonicalizer::canonicalizeUrl()
+#### Canonicalizer::url()
 
 Args: `string $url, string $separator = '-'`
 
 The function calls `trim()` function with slash (`/`) and backslash (`\`) added to charlist and slugs url path items
 with specified separator.
 
-#### Canonicalizer::canonicalizeUri()
+#### Canonicalizer::uri()
 
 Args: `sstring $url, string $separator = '-'`
 
-`Canonicalizer::canonicalizeUrl()` alias
+`Canonicalizer::url()` alias
 
 ### Canonicalizer::macro()
 
