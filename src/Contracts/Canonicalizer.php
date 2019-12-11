@@ -20,4 +20,32 @@ interface Canonicalizer
      * @return string|null
      */
     public static function canonicalizeEmail(string $email): ?string;
+
+    /**
+     * Canonicalize slug.
+     *
+     * @param string $title
+     * @param string $separator
+     * @param string|null $language
+     * @return string
+     */
+    public static function canonicalizeSlug(string $title, string $separator = '-', ?string $language = 'en'): string;
+
+    /**
+     * Canonicalize url.
+     *
+     * @param string $url
+     * @param string $separator
+     * @return string
+     */
+    public static function canonicalizeUrl(string $url, string $separator = '-'): string;
+
+    /**
+     * Canonicalize uri.
+     *
+     * @param string $uri
+     * @param string $separator
+     * @return string
+     */
+    public static function canonicalizeUri(string $uri, string $separator = '-'): string;
 }

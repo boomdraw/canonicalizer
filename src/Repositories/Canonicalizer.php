@@ -3,6 +3,7 @@
 namespace Boomdraw\Canonicalizer\Repositories;
 
 use Boomdraw\Canonicalizer\Contracts\Canonicalizer as CanonicalizerContract;
+use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 
 class Canonicalizer implements CanonicalizerContract
@@ -49,5 +50,48 @@ class Canonicalizer implements CanonicalizerContract
         $email .= '@'.$emailExploded[1];
 
         return $email;
+    }
+
+    /**
+     * Canonicalize slug.
+     *
+     * @param string $title
+     * @param string $separator
+     * @param string|null $language
+     * @return string
+     */
+    public static function canonicalizeSlug(string $title, string $separator = '-', ?string $language = 'en'): string
+    {
+        return Str::slug($title, $separator, $language);
+    }
+
+    /**
+     * Canonicalize url.
+     *
+     * @param string $url
+     * @param string $separator
+     * @return string
+     */
+    public static function canonicalizeUrl(string $url, string $separator = '-'): string
+    {
+        $url = trim($url, " \t\n\r\0\x0B/\\");
+        $url = explode('/', $url);
+        array_walk($url, function (&$item) use ($separator) {
+            $item = Str::slug($item, $separator);
+        });
+
+        return implode('/', $url);
+    }
+
+    /**
+     * Canonicalize uri.
+     *
+     * @param string $uri
+     * @param string $separator
+     * @return string
+     */
+    public static function canonicalizeUri(string $uri, string $separator = '-'): string
+    {
+        return self::canonicalizeUrl($uri, $separator);
     }
 }

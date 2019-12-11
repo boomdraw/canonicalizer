@@ -49,6 +49,25 @@ Args: `string $email`
 
 Returns canonicalized email without dots before `@` or `null` if the string does not contain `@`
 
+#### Canonicalizer::canonicalizeSlug()
+
+Args: `string $title, string $separator = '-', ?string $language = 'en'`
+
+`\Illuminate\Support\Str::slug()` alias
+
+#### Canonicalizer::canonicalizeUrl()
+
+Args: `string $url, string $separator = '-'`
+
+The function calls `trim()` function with slash (`/`) and backslash (`\`) added to charlist and slugs url path items
+with specified separator.
+
+#### Canonicalizer::canonicalizeUri()
+
+Args: `sstring $url, string $separator = '-'`
+
+`Canonicalizer::canonicalizeUrl()` alias
+
 ### Canonicalizer::macro()
 
 Args `string $name, object|callable $macro = true`
